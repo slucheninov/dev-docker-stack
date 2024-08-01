@@ -11,7 +11,7 @@ RUN apk --no-cache add --virtual .build-deps $PHPIZE_DEPS \
   && docker-php-source extract \
   && docker-php-ext-configure intl \
   && docker-php-ext-configure gd --with-freetype --with-jpeg --with-webp --with-xpm \
-  && docker-php-ext-install gd intl pdo pdo_mysql mysqli pgsql pdo_pgsql zip opcache \
+  && docker-php-ext-install gd intl pdo pdo_mysql mysqli zip opcache \
   && docker-php-ext-enable opcache \
   && docker-php-source delete \
   && apk del .build-deps
