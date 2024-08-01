@@ -6,7 +6,7 @@ $mysqlPassword = "onlylocalhost";
 
 try {
 
-    $conn = new PDO("mysql:host=$mysqlServerName;dbname=dbname", $mysqlUserName, $mysqlPassword);
+    $conn = new PDO("mysql:host=$mysqlServerName;dbname=wmaster", $mysqlUserName, $mysqlPassword);
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     echo "MySQL connection to ".$mysqlServerName." success";
 
