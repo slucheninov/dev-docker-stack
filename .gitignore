@@ -3,4 +3,3 @@ html/*
 public/*
 nginx/domain.conf
 nginx/add*.conf
-README.md
