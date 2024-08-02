@@ -1,3 +1,4 @@
 certbot/*
+html/*
 nginx/domain.conf
 nginx/add*.conf
