@@ -36,11 +36,11 @@ services:
 # PHP 8
   php:
     build:
-      context: ./php
+      context: .
       dockerfile: php/Dockerfile
     volumes:
-      - .:/var/www
-      - ./php/www.conf:/usr/local/etc/php-fpm.d/www.conf
+      - ../public:/var/www/
+      - ${PWD}/php/www.conf:/usr/local/etc/php-fpm.d/www.conf
     depends_on:
       - mysql
     restart: unless-stopped
