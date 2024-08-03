@@ -1,3 +1,4 @@
 certbot/*
 nginx/*.ssl.conf
 nginx/*.nonssl.conf
+.env
