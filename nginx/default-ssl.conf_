@@ -4,10 +4,10 @@ server {
     listen 443 ssl default;
     http2 on;
 
-    server_name api.uptime.click;
+    server_name {domain.com};
 
-    ssl_certificate /etc/letsencrypt/live/api.uptime.click/fullchain.pem;
-    ssl_certificate_key /etc/letsencrypt/live/api.uptime.click/privkey.pem;
+    ssl_certificate /etc/letsencrypt/live/{domain.com}/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/{domain.com}/privkey.pem;
    
     # Improve HTTPS performance with session resumption
     ssl_session_timeout 1d;
@@ -27,7 +27,7 @@ server {
     # uses Google DNS servers
     ssl_stapling on;
     ssl_stapling_verify on;
-    ssl_trusted_certificate /etc/letsencrypt/live/api.uptime.click/fullchain.pem;
+    ssl_trusted_certificate /etc/letsencrypt/live/{domain.com}/fullchain.pem;
     resolver 8.8.8.8 8.8.4.4 valid=300s;
     resolver_timeout 5s;
 
@@ -79,4 +79,5 @@ server {
     location ~ \.htaccess {
         deny all;
     }
+
 }

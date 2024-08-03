@@ -1,0 +1,54 @@
+server {
+    listen 80;
+    server_name {domain.com};
+
+    # Logging in a container
+    access_log /dev/stdout;
+    error_log stderr error;
+    error_log /dev/stdout info;
+
+    # Document Root
+    root /var/www/public/;
+
+    # Directory Indexes
+    index index.php index.html index.htm;
+
+    # Character Set
+    charset utf-8;
+
+    # TODO: Compression, interpreters, websocket proxies, logging, XSS headers, ...
+
+    # Location
+    location / {
+        try_files $uri $uri/ /index.php;
+    }
+
+    # Error Pages
+    error_page 404 /404.html;
+    error_page 500 502 503 504 /50x.html;
+
+    # Pass the PHP scripts to FastCGI server listening on 127.0.0.1:9000
+    #
+    location ~ \.php$ {
+        try_files $uri =404;
+        fastcgi_split_path_info ^(.+\.php)(/.+)$;
+        fastcgi_pass php:9000;
+        fastcgi_index index.php;
+        include fastcgi_params;
+        fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+        fastcgi_param PATH_INFO $fastcgi_path_info;
+    }
+
+    # Deny access to . files, for security
+    #
+    location ~ /\. {
+        log_not_found off;
+        deny all;
+    }
+
+    # Block access to .htaccess
+    location ~ \.htaccess {
+        deny all;
+    }
+
+}
