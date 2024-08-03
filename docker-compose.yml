@@ -36,7 +36,7 @@ services:
 # PHP 8
   php:
     build:
-      context: .
+      context: ./php
       dockerfile: php/Dockerfile
     volumes:
       - .:/var/www
