@@ -57,7 +57,7 @@ services:
     volumes:
       - ../public:/var/www/public
       - type: bind
-        source: ${PWD}/cron/www-data
+        source: ../cron/www-data
         target: /var/spool/cron/crontabs/www-data
     depends_on:
       - mysql
