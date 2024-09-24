@@ -49,6 +49,23 @@ services:
     environment: 
       - TZ=Europe/Kyiv
 
+# cron
+  cron:
+    build:
+      context: .
+      dockerfile: php/Dockerfile
+    volumes:
+      - ../public:/var/www/public
+      - type: bind
+        source: ${PWD}/cron/www-data
+        target: /var/spool/cron/crontabs/www-data
+    depends_on:
+      - mysql
+    restart: unless-stopped
+    environment: 
+      - TZ=Europe/Kyiv
+    entrypoint: "/bin/sh -c 'crond -f -L /dev/stdout'"
+
 # Mysql 8
   mysql:
     image: mysql:8
