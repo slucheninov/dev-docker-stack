@@ -1,1 +1,2 @@
+# for run file chmod 660 www-data + chown root:wmaster www-data
 */5 * * * * echo "cront test ok"
